@@ -12,7 +12,9 @@ class TextRepositoryImpl implements TextRepository {
     try {
       return await _textDatasource.imageToText(file);
     } on TextError {
-      throw TextError('Falha ao adquirir texto da imagem no repositorio');
+      String message = 'Falha ao adquirir texto da imagem no repositorio';
+      TextError(message).callError();
+      throw TextError(message);
     }
   }
 }

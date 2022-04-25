@@ -28,6 +28,7 @@ class _CameraPageState extends ModularState<CameraPage, HomeStore> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: CameraPreview(
           store.controller,
           child: Column(

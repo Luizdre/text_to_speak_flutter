@@ -82,6 +82,7 @@ abstract class HomeStoreBase with Store {
     actualSpeech = value;
   }
 
+  @action
   setLanguague(String lan) async {
     loading = true;
     await _ttsUsecase.setLanguage(lan).then((value) => loading = false);
@@ -98,6 +99,7 @@ abstract class HomeStoreBase with Store {
     }
   }
 
+  @action
   Future getLanguages() async {
     languages = await _ttsUsecase.getLanguages();
     language = languages[0].toString();
@@ -106,10 +108,12 @@ abstract class HomeStoreBase with Store {
         .toString();
   }
 
+  @action
   Future getCameras() async {
     controller = await _cameraUsecase.setCamera();
   }
 
+  @action
   Future getVoices() async {
     voices = await _ttsUsecase.getVoices();
     voices = _ttsUsecase.sortVoices(voices);
@@ -117,25 +121,33 @@ abstract class HomeStoreBase with Store {
     setLanguague(language);
   }
 
+  @action
   Future getPictureFromGallery() async {
     XFile? file = await _galleryUsecase.getPictureFromGallery();
     pictureToText(file!);
   }
 
+  @action
   Future getPictureFromCamera() async {
-    XFile file = await controller.takePicture();
-    pictureToText(file);
+    XFile? file = await _galleryUsecase.getPictureFromCamera();
+    pictureToText(file!);
   }
 
+  @action
   Future pictureToText(XFile file) async {
+    loading = true;
     textcontroller.text = await _textUsecase.imageToText(file);
+    loading = false;
   }
 
+  @action
   Future getInformation() async {
     try {
+      loading = true;
       getCameras();
       getLanguages();
       getVoices();
+      loading = false;
     } catch (e) {
       throw '';
     }

@@ -5,5 +5,5 @@ abstract class CameraDatasource{
 
   Future<CameraController> setCamera();
 
-  Future<XFile> takePicture();
+  Future<XFile> takePicture(CameraController controller);
 }

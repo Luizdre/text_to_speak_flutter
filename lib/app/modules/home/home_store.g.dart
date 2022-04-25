@@ -210,6 +210,67 @@ mixin _$HomeStore on HomeStoreBase, Store {
     return _$setSpeechAsyncAction.run(() => super.setSpeech(value));
   }
 
+  final _$setLanguagueAsyncAction = AsyncAction('HomeStoreBase.setLanguague');
+
+  @override
+  Future setLanguague(String lan) {
+    return _$setLanguagueAsyncAction.run(() => super.setLanguague(lan));
+  }
+
+  final _$getLanguagesAsyncAction = AsyncAction('HomeStoreBase.getLanguages');
+
+  @override
+  Future<dynamic> getLanguages() {
+    return _$getLanguagesAsyncAction.run(() => super.getLanguages());
+  }
+
+  final _$getCamerasAsyncAction = AsyncAction('HomeStoreBase.getCameras');
+
+  @override
+  Future<dynamic> getCameras() {
+    return _$getCamerasAsyncAction.run(() => super.getCameras());
+  }
+
+  final _$getVoicesAsyncAction = AsyncAction('HomeStoreBase.getVoices');
+
+  @override
+  Future<dynamic> getVoices() {
+    return _$getVoicesAsyncAction.run(() => super.getVoices());
+  }
+
+  final _$getPictureFromGalleryAsyncAction =
+      AsyncAction('HomeStoreBase.getPictureFromGallery');
+
+  @override
+  Future<dynamic> getPictureFromGallery() {
+    return _$getPictureFromGalleryAsyncAction
+        .run(() => super.getPictureFromGallery());
+  }
+
+  final _$getPictureFromCameraAsyncAction =
+      AsyncAction('HomeStoreBase.getPictureFromCamera');
+
+  @override
+  Future<dynamic> getPictureFromCamera() {
+    return _$getPictureFromCameraAsyncAction
+        .run(() => super.getPictureFromCamera());
+  }
+
+  final _$pictureToTextAsyncAction = AsyncAction('HomeStoreBase.pictureToText');
+
+  @override
+  Future<dynamic> pictureToText(XFile file) {
+    return _$pictureToTextAsyncAction.run(() => super.pictureToText(file));
+  }
+
+  final _$getInformationAsyncAction =
+      AsyncAction('HomeStoreBase.getInformation');
+
+  @override
+  Future<dynamic> getInformation() {
+    return _$getInformationAsyncAction.run(() => super.getInformation());
+  }
+
   final _$HomeStoreBaseActionController =
       ActionController(name: 'HomeStoreBase');
 

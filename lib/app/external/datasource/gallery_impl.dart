@@ -9,4 +9,8 @@ class GalleryImpl implements GalleryDatasource {
   Future<XFile?> getPictureFromGallery() async {
     return await _imagePicker.pickImage(source: ImageSource.gallery);
   }
+  @override
+  Future<XFile?> getPictureFromCamera() async {
+    return await _imagePicker.pickImage(source: ImageSource.camera);
+  }
 }

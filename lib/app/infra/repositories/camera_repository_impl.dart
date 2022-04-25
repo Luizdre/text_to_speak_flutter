@@ -12,7 +12,9 @@ class CameraRepositoryImpl implements CameraRepository {
     try {
       return await _cameraDatasource.getAvaiableCameras();
     } on CameraError {
-      throw CameraError('Falha ao adquirir cameras no repositorio');
+      String message = 'Falha ao adquirir cameras no repositorio';
+      CameraError(message).callError();
+      throw CameraError(message);
     }
   }
 
@@ -21,16 +23,20 @@ class CameraRepositoryImpl implements CameraRepository {
     try {
       return await _cameraDatasource.setCamera();
     } on CameraError {
-      throw CameraError('Falha ao alterar camera no repositorio');
+      String message = 'Falha ao alterar camera no repositorio';
+      CameraError(message).callError();
+      throw CameraError(message);
     }
   }
 
   @override
-  Future<XFile> takePicture() async {
+  Future<XFile> takePicture(CameraController controller) async {
     try {
-      return await _cameraDatasource.takePicture();
+      return await _cameraDatasource.takePicture(controller);
     } on CameraError {
-      throw CameraError('Falha ao tirar foto no repositorio');
+      String message = 'Falha ao tirar foto no repositorio';
+      CameraError(message).callError();
+      throw CameraError(message);
     }
   }
 }

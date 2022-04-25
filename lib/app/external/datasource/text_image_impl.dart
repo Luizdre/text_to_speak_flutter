@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:tts/app/infra/datasource/text_image_datasource.dart';
 import 'package:camera/camera.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
-import 'package:tts/app/infra/datasource/text_image_datasource.dart';
 
 class TextImpl implements TextDatasource {
   @override

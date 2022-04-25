@@ -12,7 +12,20 @@ class GalleryRepositoryImpl implements GalleryRepository {
     try {
       return await _galleryDatasource.getPictureFromGallery();
     } on GalleryError {
-      throw GalleryError('Falha ao adquirir foto da galeria no repositorio');
+      String message = 'Falha ao adquirir foto da galeria no repositorio';
+      GalleryError(message).callError();
+      throw GalleryError(message);
+    }
+  }
+
+  @override
+  Future<XFile?> getPictureFromCamera() async {
+    try {
+      return await _galleryDatasource.getPictureFromCamera();
+    } on GalleryError {
+      String message = 'Falha ao adquirir foto da camera no repositorio';
+      GalleryError(message).callError();
+      throw GalleryError(message);
     }
   }
 }

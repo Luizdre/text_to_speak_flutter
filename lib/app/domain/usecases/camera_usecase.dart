@@ -5,7 +5,7 @@ import 'package:tts/app/domain/repositories/camera_repository.dart';
 abstract class ICameraUsecase {
   Future<List<CameraDescription>> getAvaiableCameras();
   Future<CameraController> setCamera();
-  Future<XFile> takePicture();
+  Future<XFile> takePicture(CameraController controller);
 }
 
 class CameraUsecase implements ICameraUsecase {
@@ -27,16 +27,20 @@ class CameraUsecase implements ICameraUsecase {
     try {
       return await _cameraRepository.setCamera();
     } catch (e) {
-      throw CameraError('Falha ao definir camera');
+      String message = 'Falha ao definir camera';
+      CameraError(message).callError();
+      throw CameraError(message);
     }
   }
 
   @override
-  Future<XFile> takePicture() async {
+  Future<XFile> takePicture(CameraController controller) async {
     try {
-      return await _cameraRepository.takePicture();
+      return await _cameraRepository.takePicture(controller);
     } catch (e) {
-      throw CameraError('Falha ao tirar foto');
+      String message = 'Falha ao tirar foto';
+      CameraError(message).callError();
+      throw CameraError(message);
     }
   }
 }

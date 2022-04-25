@@ -11,7 +11,9 @@ class TTSRepositoryImpl implements TTSRepository {
     try {
       return await _ttsDatasource.getLanguages();
     } on TTSError {
-      throw TTSError('Falha ao adquirir linguagens no repositorio');
+      String message = 'Falha ao adquirir linguagens no repositorio';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -20,7 +22,9 @@ class TTSRepositoryImpl implements TTSRepository {
     try {
       return await _ttsDatasource.getVoices();
     } on TTSError {
-      throw TTSError('Falha ao adquirir vozes no repositorio');
+      String message = 'Falha ao adquirir vozes no repositorio';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -29,7 +33,9 @@ class TTSRepositoryImpl implements TTSRepository {
     try {
       return await _ttsDatasource.setLanguage(language);
     } on TTSError {
-      throw TTSError('Falha ao definir linguagem no repositorio');
+      String message = 'Falha ao definir linguagem no repositorio';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -38,7 +44,9 @@ class TTSRepositoryImpl implements TTSRepository {
     try {
       return await _ttsDatasource.setSpeech(peech);
     } on TTSError {
-      throw TTSError('Falha ao definir peech no repositorio');
+      String message = 'Falha ao definir velocidade no repositorio';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -47,7 +55,9 @@ class TTSRepositoryImpl implements TTSRepository {
     try {
       return await _ttsDatasource.setPitch(pitch);
     } on TTSError {
-      throw TTSError('Falha ao definir pitch no repositorio');
+      String message = 'Falha ao definir tom de voz no repositorio';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -56,7 +66,9 @@ class TTSRepositoryImpl implements TTSRepository {
     try {
       return await _ttsDatasource.setVoice(voice);
     } on TTSError {
-      throw TTSError('Falha ao definir voz no repositorio');
+      String message = 'Falha ao definir voz no repositorio';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -65,7 +77,9 @@ class TTSRepositoryImpl implements TTSRepository {
     try {
       return await _ttsDatasource.speak(text);
     } on TTSError {
-      throw TTSError('Falha ao reproduzir texto no repositorio');
+      String message = 'Falha ao reproduzir texto no repositorio';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 

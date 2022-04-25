@@ -5,5 +5,5 @@ abstract class CameraRepository {
 
   Future<CameraController> setCamera();
 
-  Future<XFile> takePicture();
+  Future<XFile> takePicture(CameraController controller);
 }

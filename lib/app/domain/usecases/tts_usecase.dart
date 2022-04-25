@@ -30,7 +30,9 @@ class TTSUsecase implements ITTSUsecase {
     try {
       return await _ttsRepository.getLanguages();
     } catch (e) {
-      throw TTSError('Falha ao adquirir idiomas');
+      String message = 'Falha ao adquirir idiomas';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -39,7 +41,9 @@ class TTSUsecase implements ITTSUsecase {
     try {
       return await _ttsRepository.getVoices();
     } catch (e) {
-      throw TTSError('Falha ao adquirir vozes');
+      String message = 'Falha ao adquirir vozes';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -49,10 +53,14 @@ class TTSUsecase implements ITTSUsecase {
       if (language.isNotEmpty) {
         await _ttsRepository.setLanguage(language);
       } else {
-        throw TTSError('Nenhuma linguagem recebida');
+        String message = 'Nenhuma linguagem recebida';
+        TTSError(message).callError();
+        throw TTSError(message);
       }
     } catch (e) {
-      throw TTSError('Falha ao alterar linaguem');
+      String message = 'Falha ao alterar linaguem';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -62,10 +70,14 @@ class TTSUsecase implements ITTSUsecase {
       if (peech != null) {
         await _ttsRepository.setSpeech(peech);
       } else {
-        throw TTSError('Nenhum valor de voz recebido');
+        String message = 'Nenhum valor de voz recebido';
+        TTSError(message).callError();
+        throw TTSError(message);
       }
     } catch (e) {
-      throw TTSError('Falha ao definir valor de voz');
+      String message = 'Falha ao definir valor de voz';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -75,10 +87,14 @@ class TTSUsecase implements ITTSUsecase {
       if (pitch != null) {
         await _ttsRepository.setPitch(pitch);
       } else {
-        throw TTSError('Nenhum valor de pitch recebido');
+        String message = 'Nenhum valor de tom recebido';
+        TTSError(message).callError();
+        throw TTSError(message);
       }
     } catch (e) {
-      throw TTSError('Falha ao definir valor de pitch');
+      String message = 'Falha ao definir tom de voz';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -96,10 +112,14 @@ class TTSUsecase implements ITTSUsecase {
         var voiceMap = {'name': value[0], 'locale': value[1].trim()};
         await _ttsRepository.setVoice(voiceMap);
       } else {
-        throw TTSError('Nenhuma voz foi recebida');
+        String message = 'Nenhuma voz foi recebida';
+        TTSError(message).callError();
+        throw TTSError(message);
       }
     } catch (e) {
-      throw TTSError('Falha ao definir voz');
+      String message = 'Falha ao definir voz';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -116,7 +136,9 @@ class TTSUsecase implements ITTSUsecase {
 
       return voices;
     } catch (e) {
-      throw TTSError('Falha ao adquirir idiomas');
+      String message = 'Falha ao adquirir idiomas';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 
@@ -126,10 +148,14 @@ class TTSUsecase implements ITTSUsecase {
       if (text.isNotEmpty) {
         await _ttsRepository.speak(text);
       } else {
-        throw TTSError('Nenhum texto identificado');
+        String message = 'Nenhum texto identificado';
+        TTSError(message).callError();
+        throw TTSError(message);
       }
     } catch (e) {
-      throw TTSError('Falha ao reproduzir texto');
+      String message = 'Falha ao reproduzir texto';
+      TTSError(message).callError();
+      throw TTSError(message);
     }
   }
 

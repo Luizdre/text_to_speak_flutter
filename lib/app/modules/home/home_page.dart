@@ -45,7 +45,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                           maxLines: 15,
                           enableSuggestions: true,
                           enableIMEPersonalizedLearning: true,
-                          maxLength: 4010,
+                          maxLength: 4000,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -69,20 +69,19 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                             Text(
                                 'Velocidade da voz ${store.actualSpeech.toString()}'),
                             Observer(
-                              builder: (context) =>
-                                  Slider(
-                                          value: store.actualSpeech,
-                                          onChanged: (v) => setState(() {
-                                            store.setSpeech(v);
-                                            store.actualSpeech = v;
-                                          }),
-                                          min: 0.5,
-                                          max: 2,
-                                          divisions: 10,
-                                          label: store.actualSpeech.toString(),
-                                        ),
+                              builder: (context) => Slider(
+                                value: store.actualSpeech,
+                                onChanged: (v) => setState(() {
+                                  store.setSpeech(v);
+                                  store.actualSpeech = v;
+                                }),
+                                min: 0.5,
+                                max: 2,
+                                divisions: 10,
+                                label: store.actualSpeech.toString(),
+                              ),
                             ),
-                            Text('Pitch ${store.pitch.toString()}'),
+                            Text('Tom da voz ${store.pitch.toString()}'),
                             Observer(
                               builder: (context) => Slider(
                                 value: store.pitch,
@@ -123,10 +122,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                                     icon: const Icon(Icons.stop_circle_outlined,
                                         color: Colors.red)),
                                 IconButton(
-                                    onPressed: () => Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const CameraPage())),
+                                    onPressed: () => store.getPictureFromCamera(),
                                     icon: const Icon(
                                       Icons.camera_alt_outlined,
                                       color: Colors.purple,

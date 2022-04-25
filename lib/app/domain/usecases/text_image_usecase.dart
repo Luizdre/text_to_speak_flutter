@@ -15,10 +15,14 @@ class TextUsecase implements ITextUsecase {
       try {
         return await _textRepository.imageToText(file);
       } catch (e) {
-        throw TextError('Falha ao extrair texto da imagem');
+        String message = 'Falha ao extrair texto da imagem';
+        TextError(message).callError();
+        throw TextError(message);
       }
     } else {
-      throw TextError('Nenhuma imagem identificada');
+      String message = 'Nenhuma imagem identificada';
+      TextError(message).callError();
+      throw TextError(message);
     }
   }
 }
