@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:tts/app/modules/home/widgets/camera.dart';
+import 'package:share_plus/share_plus.dart';
 import 'home_store.dart';
 
 class HomePage extends StatefulWidget {
@@ -122,7 +123,8 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                                     icon: const Icon(Icons.stop_circle_outlined,
                                         color: Colors.red)),
                                 IconButton(
-                                    onPressed: () => store.getPictureFromCamera(),
+                                    onPressed: () =>
+                                        store.getPictureFromCamera(),
                                     icon: const Icon(
                                       Icons.camera_alt_outlined,
                                       color: Colors.purple,
@@ -134,6 +136,11 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                                         color: Colors.indigo))
                               ],
                             ),
+                            ElevatedButton(
+                                onPressed: () {
+                                  Share.share('Teste', subject: 'Teste');
+                                },
+                                child: Text('Teste'))
                           ],
                         ),
                       )
